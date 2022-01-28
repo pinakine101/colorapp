@@ -989,7 +989,7 @@ $("[data-tooltip]").mousemove(function (eventObject) {
 							console.log('up!');
 						} else {
 							// calcColor(cou--, cou1--, cou2--);
-							console.log('down!');
+							console.log('down_!');
 						}
 					}
 				}
