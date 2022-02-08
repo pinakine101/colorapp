@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			'.color4',
 			'.color5',
 			'.color6',
-			'.color7',
+			'.color9',
 			'.color8'
 		];
 	
@@ -457,7 +457,10 @@ $("[data-tooltip]").mousemove(function (eventObject) {
 			let span = e.target;
 			let box = $('.colorpickerHolder');
 			let spanColor = $(span).css('backgroundColor');
-			let col = rgb2hex(spanColor);
+			
+			let testPicker = $('.testPicker');
+			let testPickerColor = $(testPicker).css('backgroundColor');
+			let col = rgb2hex(testPickerColor);
 	
 			$(box).css({
 				"position": "absolute",
@@ -465,7 +468,7 @@ $("[data-tooltip]").mousemove(function (eventObject) {
 				"top": e.pageY + "px"
 			});
 	
-			$(box).ColorPicker({
+			$(testPicker).ColorPicker({
 	
 				flat: true,
 				color: col,
