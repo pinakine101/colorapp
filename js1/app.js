@@ -105,20 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			const contextBox = document.createElement('ColPick');
 			contextBox.classList.add('colorpickerHolder');
 			document.querySelector('body').append(contextBox);
-			let box = $('.colorpickerHolder');
 			let spanColor = $(e.target).css('backgroundColor');
 	
-			$(box).css({
+			$(contextBox).css({
 				"position": "absolute",
 				"left": e.pageX + "px",
 				"top": e.pageY + "px"
 			});
 	
-			$(box).ColorPicker({
+			$(contextBox).ColorPicker({
 	
 	
 				flat: true,
-				color: rgbToHex(spanColor),
+				color: rgb2hex(spanColor),
 				onChange: function (hsb, hex, rgb) {
 					$(e.target).css('backgroundColor', '#' + hex, );
 				}
@@ -884,6 +883,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		return '#' + (0x1000000 + rgb).toString(16).slice(1);
 	}
 
+	function rgba2hex(r, g, b, a) {
+		if (r > 255 || g > 255 || b > 255 || a > 255)
+			throw "Invalid color component";
+		return (256 + r).toString(16).substr(1) +((1 << 24) + (g << 16) | (b << 8) | a).toString(16).substr(1);
+	}
 	function rgb2hex(rgb) {
 
 		// Choose correct separator
