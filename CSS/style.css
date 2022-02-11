@@ -156,14 +156,7 @@ button {
 
 /*tabs
 ==========*/
-.testPicker {
-    position: absolute;
-    z-index: 5000;
-    width: 100px;
-    height: 300px;
-    background-color:#5af874;
-    align-items: center;
-}
+
 .tabs {
     align-items: center;
     display: flex;
