@@ -10,6 +10,8 @@
         <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+
         <title>Сочетание цветов интерьера</title>
     </head>
 
@@ -65,7 +67,7 @@
     </svg>    
       
 <body>
-  
+   
     <header class="header">
       <div class="container">
         <div class="header__inner">
@@ -117,8 +119,7 @@
                 <svg class = "butt"> <use xlink:href="#plus"data-tooltip="Add"></use> </svg>
                 <svg class = "butt"> <use xlink:href="#minus"data-tooltip="Delet"></use> </svg>
                 <svg class = "butt"> <use xlink:href="#vertcolor"data-tooltip="Performance"></use> </svg>
-                <img class = "butt" src = "img/load.png" data-tooltip="Load img" 
-                onclick="document.getElementById('file').click();"></use> 
+                
                
         </div> 
        
@@ -188,26 +189,7 @@
             <span class="color5" ></span>
         </div> -->
     </div>
-    <input type='file' id = "file" accept='image/*' onchange='openFile(event)'><br>
-    <script>
-        let openFile = function(event) {
-            let input = event.target;
-
-            let reader = new FileReader();
-            let tabsContent = document.querySelectorAll(".intro_1");
-            tabsContent.forEach((item)=>{
-                if($(item).children('span').hasClass('active')){
-                    reader.onload = function(){
-            let dataURL = reader.result;
-            let spanActive = document.querySelector('span.active');
-            spanActive.querySelector('.loadImg').src = dataURL;
-           
-            };
-            reader.readAsDataURL(input.files[0]);
-                };
-            });
-        };
-        </script>
+   
             
        <script src="js1/app.js"></script>
        
