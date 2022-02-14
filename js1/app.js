@@ -350,11 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (i.classList.contains('intro_1_row')) {
 				axisSort = 'x';
 				$('span').css('height', 'auto', 'overflow-y', 'hidden');
-				// $('.color2').css('width', '35.4%', 'overflow-x', 'hidden');
-				// $('.color6').css('width', '9.1%', 'overflow-x', 'hidden');
-				// $('.color5').css('width', '19%', 'overflow-x', 'hidden');
-				// $('.loadImg').css('width', '100vw', ' height', '100vw');
-
+				
 				$(textColor).css('margin-left', '10px');
 			} else {
 				axisSort = 'y';
