@@ -124,29 +124,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 		}
 
-	// sliceColor()
-	// let  newArrLight = arrayLight.map(function(item){
-	// 	// sliceColor(spanActive);
-	// 	let delta;
-	// 	if(result[2]<= 100 && result[2] > 97){item[i] = 100 - (result[2])}
-	// 	else if(result[2] <= 13 && result[2] >= 0) {item[i]= 0}
+	sliceColor()
+	let  newArrLight = arrayLight.map(function(item){
+		sliceColor(spanActive);
+		let delta;
+		if(result[2]<= 100 && result[2] > 97){item[i] = 100 - (result[2])}
+		else if(result[2] <= 13 && result[2] >= 0) {item[i]= 0}
 
-	// 	else if(result[2] <= item[0]  && result[2] >=  item[1])   {item[0] -(result[2]/8)}
-	// 	else if(result[2] <= item[1]  && result[2] >=  item[2])   {item[1] -(result[2]/8)}
-	// 	else if(result[2] <= item[2]  && result[2] >=  item[3])   {item[2] -(result[2]/8)}
-	// 	else if(result[2] <= item[3]  && result[2] >=  item[4])   {item[3] -(result[2]/8)}
-	// 	else if(result[2] <= item[4]  && result[2] >=  item[5])   {item[4] -(result[2]/8)}
-	// 	else if(result[2] <= item[5]  && result[2] >=  item[6])   {item[5] -(result[2]/8)}
-	// 	else if(result[2] <= item[6]  && result[2] >=  item[7])   {item[6] -(result[2]/8)}
-	// 	else if(result[2] <= item[7]  && result[2] >=  item[0])   {item[7] -(result[2]/8)}
+		else if(result[2] <= item[0]  && result[2] >=  item[1])   {item[0] -(result[2]/8)}
+		else if(result[2] <= item[1]  && result[2] >=  item[2])   {item[1] -(result[2]/8)}
+		else if(result[2] <= item[2]  && result[2] >=  item[3])   {item[2] -(result[2]/8)}
+		else if(result[2] <= item[3]  && result[2] >=  item[4])   {item[3] -(result[2]/8)}
+		else if(result[2] <= item[4]  && result[2] >=  item[5])   {item[4] -(result[2]/8)}
+		else if(result[2] <= item[5]  && result[2] >=  item[6])   {item[5] -(result[2]/8)}
+		else if(result[2] <= item[6]  && result[2] >=  item[7])   {item[6] -(result[2]/8)}
+		else if(result[2] <= item[7]  && result[2] >=  item[0])   {item[7] -(result[2]/8)}
+		console.log(result[2])
 
-	// return item - 5;
-	// });
+	return item - 5;
+	});
 
 
-	// let newArrHue= arrayHueMain.map((item)=>{
-	// 	return item + (result[0])
-	// });
+	let newArrHue= arrayHueMain.map((item)=>{
+		sliceColor(spanActive);
+		console.log(result[0])
+		return item + result[0];
+	});
 
 
 
@@ -155,14 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function findColorName(e) {
 		// находим в активном табе активный цвет 
-		tabsContent.forEach((item, i) => {
-			if (tabsBtn[i].classList.contains('active')) {
+		
 				let color = $('span.active').css("background-color");
 				//помещаем в  переменную *textColorBuffer*  имя HEX активного цвета
 				textColorBuffer = rgb2hex(color);
 				sliceColor();
-			}
-		});
 	}
 
 	function activeColor(e) { //функионал режима *span.active*
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			target.classList.remove("active");
 			$(spanActive).removeClass('active');
 			$(tabsContent).children().removeClass('active');
-			target.parentNode.classList.remove('active');
+			// target.parentNode.classList.remove('active');
 			textColor.classList.remove('textColor');
 		}
 
@@ -241,24 +241,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function calcCouPlus() { // запускаем перебор гаммы в plus режима БЕЗ *span.active*
 		counterPlus(arrStyleColor);
-		separateGamms();
+		correctGamma(newArrHue, arraySaturSleep, newArrLight);
 	}
 
 	function calcCouMinus() { // запускаем перебор гаммы в minus режима БЕЗ *span.active*
 		counterMinus(arrStyleColor);
-		separateGamms();
+		correctGamma(newArrHue, arraySaturSleep, newArrLight);
 	}
 
 	function actCalcCouPus() { // запускаем перебор гаммы в *+* режима  *span.active*
 		counterPlus(arrStyleColor);
-		separateGamms();
+		correctGamma(newArrHue, arraySaturSleep, newArrLight);
 
 	}
 
 	function actCalcCouMinus() { // запускаем перебор гаммы в *-* режима *span.active*
 
 		counterMinus(arrStyleColor);
-		separateGamms();
+		correctGamma(newArrHue, arraySaturSleep, newArrLight);
 
 	}
 	//_______Buttuns_______///
@@ -272,9 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	icon.addEventListener('click', () => {
 		
-		shuffleArray(arrStyleColor);
-		shuffleArray(arrayHueSleep);
-		shuffleArray(arraySaturSleep);
+		shuffleArray(arrayHueSleep, arraySaturSleep, arrayLightSleep);
+		correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep)
 
 	});
 
@@ -285,56 +284,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function addColor() {
 		let arryAddColor = [
-			'<span class = color1 ><img class="loadImg"></span>',
-			'<span class = color2 ><img class="loadImg"></span>',
-			'<span class = color3 ><img class="loadImg"></span>',
-			'<span class = color4 ><img class="loadImg"></span>',
-			'<span class = color5 ><img class="loadImg"></span>',
-			'<span class = color6 ><img class="loadImg"></span>',
-			'<span class = color7 ><img class="loadImg"></span>',
-			'<span class = color8 ><img class="loadImg"></span>'
+			'<span class = color1 ></span>',
+			'<span class = color2 ></span>',
+			'<span class = color3 ></span>',
+			'<span class = color4 ></span>',
+			'<span class = color5 ></span>',
+			'<span class = color6 ></span>',
+			'<span class = color7 ></span>',
+			'<span class = color8 ></span>'
 		];
 
-		tabsContent.forEach((item, i) => {
-			if (tabsBtn[i].classList.contains('active')) {
-				if (y >= arryAddColor.length - 1) {
+				if (y >= arryAddColor.length - 1){
 					y = 1;
-				}
-				counterPlus(arrayHueMain);
+				};
 				y++;
 
 				let newColor = $(arryAddColor[y]).insertAfter('span.active');
-				if (tabsBtn[0].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueSleep[y]}, 
-							${arraySaturSleep[y]}%, ${ arrayLight[y]}%)`);
-				}
-				if (tabsBtn[1].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueGost[cou1]},
-							 ${arraySaturGost[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
-				if (tabsBtn[2].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueKitch[cou1]}, 
-							${arraySaturKitch[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
-				if (tabsBtn[3].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${ arrayHueKids[cou1]}, 
-							${arraySaturKids[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
-				if (tabsBtn[4].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueGost[cou1]},
-							 ${arraySaturGost[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
-				if (tabsBtn[5].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueGost[cou1]}, 
-							${arraySaturGost[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
-				if (tabsBtn[6].classList.contains('active')) {
-					$(newColor).css("background-color", `hsl(${arrayHueGost[cou1]}, 
-							${arraySaturGost[cou1]}%, ${ arrayLight[cou1]}%)`);
-				}
+				$(newColor).css("background-color", `hsl(${arrayHueSleep[y]}, 
+					${arraySaturSleep[y]}%, ${ arrayLight[y]}%)`);
 
-			}
-		});
+				
 	}
 
 	editButtns[2].addEventListener('click', addColor);
@@ -369,86 +338,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//_______Tabs_________//
 
-	function hideTabContent() {
-		tabsContent.forEach(item => {
-			item.style.display = 'none';
-		});
-		tabsBtn.forEach(item => {
-			item.classList.remove('active');
-		});
-	}
+
 
 	function showTabsContent(i) {
 		tabsContent[i].style.display = 'flex';
-		tabsBtn[i].classList.add('active');
 
 	}
-	// coloring();
-	// hideTabContent();
-	// showTabsContent(0);
-	// actColorCalc(color1, arrayHue, arraySaturSleep, arrayLight, counterPlus)
-	// // 
-
-	function clickTabsBtn(event) {
-
-		let target = event.target;
-		if (target && target.classList.contains('tabs__nav-btn')) {
-			tabsBtn.forEach((item, i) => {
-				if (target == item) {
-					hideTabContent();
-					showTabsContent(i);
-				}
-			});
-		}
-
-	}
+	
+	showTabsContent(0);
 
 	counterPlus(arrStyleColor);
-
-
-	if (tabsContent[0].getAttribute('id') == 'sleepRoom') {
-		correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep);
-	}
-	$(tabsBtn).on('click', clickTabsBtn);
-
-
-
-	function separateGamms() {
-
-		if (tabsBtn[0].classList.contains('active')) {
-			correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep);
-		} else if (tabsBtn[1].classList.contains('active')) {
-			correctGamma(arrayHueGost, arraySaturGost, arrayLight);
-		} else if (tabsBtn[2].classList.contains('active')) {
-			correctGamma(arrayHueKitch, arraySaturKitch, arrayLight);
-		} else if (tabsBtn[3].classList.contains('active')) {
-			correctGamma(arrayHueKids, arraySaturKids, arrayLightKids);
-		} else if (tabsBtn[4].classList.contains('active')) {
-			correctGamma(arrayHueCab, arraySaturCab, arrayLightCad);
-		} else if (tabsBtn[5].classList.contains('active')) {
-			correctGamma(arrayHueHoll, arraySaturHoll, arrayLightHoll);
-		} else if (tabsBtn[6].classList.contains('active')) {
-			correctGamma(arrayHueHoll, arraySaturHoll, arrayLightCad);
-		}
-	}
-
-	function onClickTab(e) {
-		e.addEventListener('click', () => {
-			separateGamms();
-		}, {
-			once: true
-		});
-		return e;
-	}
-	onClickTab(tabsBtn[1]);
-	onClickTab(tabsBtn[2]);
-	onClickTab(tabsBtn[3]);
-	onClickTab(tabsBtn[4]);
-	onClickTab(tabsBtn[5]);
-	onClickTab(tabsBtn[6]);
-
-
-
+	
+	correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep);
+	
 
 	//______ToolTip___________//
 	$("[data-tooltip]").mousemove(function (eventObject) {
