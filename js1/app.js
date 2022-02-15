@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function activeColor(e) { //функионал режима *span.active*
 		let spanActive = document.querySelector('span.active');
 		const target = e.target; //получаем элемент клика	
-		let activeImg = $(target).children('img');
+		// let activeImg = $(target).children('img');
 		//если клик не на *span.active* убираем класс *active, скрываем контейнер с именем цвета
 		if (!target.classList.contains("active")) {
 			target.classList.remove("active");
@@ -384,8 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 	// coloring();
-	hideTabContent();
-	showTabsContent(0);
+	// hideTabContent();
+	// showTabsContent(0);
 	// actColorCalc(color1, arrayHue, arraySaturSleep, arrayLight, counterPlus)
 	// // 
 
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		tabsContent.forEach((item, i) => {
 
-			if (tabsBtn[i].classList.contains('active')) {
+			
 
 				if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 22) {
 					$(tabsContent[i]).children(arrStyleColor[0]).css("background",
@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					$(tabsContent).children(item).css("background",
 						`hsl(${gammaLight[i]}, ${50}%, ${ gammaLight [i]+11}%)`);
 				}
-			}
+			
 
 			$('span.active').css('backgroundColor', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
 
