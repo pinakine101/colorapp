@@ -76,19 +76,19 @@ button {
 
 .container {
    width: 100%;
-   padding:10px 80px;
+   padding:15px 80px;
   }
 
 .header__inner {
     width: 100%;
     display:inline-flex;
     justify-content:space-between;
-    align-items:center;
+    /* align-items:center; */
 }
 
 .header__logo {
-    fill: #ffffff;
-    display: flex;
+    fill: #68596e;
+    /* display: flex; */
     height: 30px;
     width: 180px;
   
@@ -117,7 +117,7 @@ button {
 }
 .buttOrder{
     margin-left: 50px;
-    fill: rgb(251, 245, 245);
+    fill: #68596e;
     width: 30px;
     height: 25px;
     transition-property: fill;
@@ -383,7 +383,7 @@ button {
      }
 
 .intro_1{
-    display:none;
+    /* display:none; */
     flex-flow:column nowrap;
     width:100%;
     background:rgb(172, 172, 172);
@@ -391,7 +391,7 @@ button {
     overflow: hidden;
 }
 .intro_1_row {
-    display:none;
+    /* display:none; */
     flex-flow:row nowrap;
     height:100%;
     background:rgb(172, 172, 172);
