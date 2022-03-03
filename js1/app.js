@@ -64,16 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	let arraySaturSleep = [20, 55, 50, 50, 70, 20, 10, 5];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
-
+	result[2] = arrayLight [4]
 	
 
 	let newArrayLight = arrayLight.map(function (item, i) {
-		result[2] = arrayLight [7];
-	if (result[2] <= 100 && result[2] > 97) {
-		item = 100 - (result[2])
-	} else if (result[2] <= 13 && result[2] >= 0) {
-		item = 10
-	}
+	// 	result[2] = arrayLight [7];
+	// if (result[2] <= 100 && result[2] > 97) {
+	// 	item = 100 - (result[2])
+	// } else if (result[2] <= 13 && result[2] >= 0) {
+	// 	item = 10
+	// }
 	// item[i] = result[2]/1.23;
 	// item[1] = item[0]/1.23;
 	// item[2] = item[1]/1.23;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// item[6] = item[5]/1.23;
 	// item[7] = item[6]/1.23;
 	
-	return item-10;
+	return item;
 });
 console.log(newArrayLight)
 	//______ColorPicker_________//
@@ -234,22 +234,22 @@ console.log(newArrayLight)
 
 	function calcCouPlus() { // запускаем перебор гаммы в plus режима БЕЗ *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function calcCouMinus() { // запускаем перебор гаммы в minus режима БЕЗ *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouPus() { // запускаем перебор гаммы в *+* режима  *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouMinus() { // запускаем перебор гаммы в *-* режима *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	
@@ -381,9 +381,9 @@ console.log(newArrayLight)
 		}
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 360) {
-			$(color1).css("background-color", `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [0]  }%)`);
-			$(color2).css("background-color", `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ gammaLight [1]   }%)`);
-			$(color3).css("background-color",	`hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [2] +3  }%)`);
+			$(color1).css("background-color", `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [cou1] = result[2]*1.23}%)`);
+			$(color2).css("background-color", `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ gammaLight [cou2] = result[2]/1.23  }%)`);
+			$(color3).css("background-color", `hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [cou3] = gammaLight [cou1]*1.23+3  }%)`);
 			// $(tabsContent).children(arrStyleColor[3]).css("background",
 			// 	`hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
 			// $(tabsContent).children(arrStyleColor[4]).css("background",
