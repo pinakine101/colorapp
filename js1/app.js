@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	return item;
 });
-console.log(newArrayLight)
+
 	//______ColorPicker_________//
 
 	let deleteColPick = function () {
@@ -137,7 +137,7 @@ console.log(newArrayLight)
 	}
 	
 
-	console.log(result[2]);
+	// console.log(result[2]);
 
 	// let newArrHue = arrayHueMain.map((item) => {
 	// 	sliceColor();
@@ -171,7 +171,7 @@ console.log(newArrayLight)
 			target.parentNode.classList.remove('active');
 			textColor.classList.remove('textColor');
 		}
-
+console.log[result[2]]
 		target.classList.add('active');
 
 		// if (target.classList.contains('loadImg')) {
@@ -372,20 +372,20 @@ console.log(newArrayLight)
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-		if (gammaLight == 100) {
-			$(tabsContent).children(item).css("background",
-				`hsl(${gammaHue}, ${50}%, ${ gammaLight -11}%)`);
-		} else if (gammaLight == 0) {
-			$(tabsContent).children(item).css("background",
-				`hsl(${gammaHue}, ${50}%, ${ gammaLight +11}%)`);
+		if (gammaLight[cou1] == 100) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
+		} else if (gammaLight[cou1] == 0) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
 		}
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 360) {
-			$(color1).css("background-color", `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [cou1] = result[2]*1.23}%)`);
-			$(color2).css("background-color", `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ gammaLight [cou2] = result[2]/1.23  }%)`);
-			$(color3).css("background-color", `hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [cou3] = gammaLight [cou1]*1.23+3  }%)`);
-			// $(tabsContent).children(arrStyleColor[3]).css("background",
-			// 	`hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
+			$(arrStyleColor[0]).css("background-color", `hsl(${ gammaHue[1]}, ${ + gammaSat[cou1]}%, ${ result[2]/1.23}%)`);
+			$(arrStyleColor[1]).css("background-color", `hsl(${ gammaHue[2]}, ${ + gammaSat[cou2]}%, ${ result[2]*1.23  }%)`);
+			$(arrStyleColor[2]).css("background-color", `hsl(${ gammaHue[3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [2] = gammaLight [2]*1.23+3  }%)`);
+			console.log(gammaLight [0], gammaLight [1],gammaLight [2],)
+			$(arrStyleColor[3]).css("background", `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
 			// $(tabsContent).children(arrStyleColor[4]).css("background",
 			// 	`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ gammaLight [cou5]   }%)`);
 			// $(tabsContent).children(arrStyleColor[5]).css("background",
