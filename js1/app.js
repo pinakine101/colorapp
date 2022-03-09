@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let spanActive = document.querySelector('span.active');
 	let textColorBuffer; // содержит имя цвета
 	let textColor = document.createElement('div'); // показывает имя цвета
-	let forslice;
-	let mainColor;
+	
 
 
 	let arrStyleColor = [
@@ -65,26 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	let arraySaturSleep = [20, 55, 50, 50, 70, 20, 10, 5];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
+	result[2] = arrayLight [4]
+	
 
-	let arrayHueGost = [15, 27, 15, 94, 48, 43, 38, 48];
-	let arraySaturGost = [20, 85, 50, 10, 50, 20, 50, 50];
-
-
-	let arrayHueKitch = [350, 15, 350, 58, 15, 94, 27, 15];
-	let arraySaturKitch = [100, 5, 20, 10, 20, 15, 60, 50];
-
-
-	let arrayHueKids = [22, 48, 43, 94, 159, 48, 48, 353, ];
-	let arraySaturKids = [100, 100, 100, 70, 80, 80, 100, 80];
-	let arrayLightKids = [95, 92, 79, 46, 43, 43, 79, 92];
-
-	let arrayHueCab = [252, 169, 246, 152, 98, 200, 217, 190, ];
-	let arraySaturCab = [5, 5, 5, 5, 0, 5, 5, 5];
-	let arrayLightCad = [95, 92, 92, 46, 27, 14, 14, 4];
-
-	let arrayHueHoll = [15, 27, 15, 94, 48, 43, 38, 48];
-	let arraySaturHoll = [10, 25, 20, 5, 0, 5, 5, 5];
-	let arrayLightHoll = [95, 92, 97, 46, 79, 79, 28, 4];
+	let newArrayLight = arrayLight.map(function (item, i) {
+	// 	result[2] = arrayLight [7];
+	// if (result[2] <= 100 && result[2] > 97) {
+	// 	item = 100 - (result[2])
+	// } else if (result[2] <= 13 && result[2] >= 0) {
+	// 	item = 10
+	// }
+	// item[i] = result[2]/1.23;
+	// item[1] = item[0]/1.23;
+	// item[2] = item[1]/1.23;
+	// item[3] = result[2]*1.23;
+	// item[4] = result[2]*1.23;
+	// item[5] = item[4]/1.23;
+	// item[6] = item[5]/1.23;
+	// item[7] = item[6]/1.23;
+	
+	return item;
+});
 
 	//______ColorPicker_________//
 
@@ -123,71 +123,44 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function sliceColor() {
-		let actCol = document.querySelector('.color2');
+		let actCol = document.querySelector('span.active');
 		$(actCol).each(function () {
 			const color = $(this).css("backgroundColor"),
 				[r, g, b] = color.match(/\d+/g);
 			const colHsl = RGB2HSL(r, g, b);
 			result = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(colHsl).slice(1);
-			// console.log(result[0])
+			console.log(result[2])
 			return result;
 		});
 		
 
 	}
-	// sliceColor()
+	
 
-	// let newArrLight = arrayLight.map(function (item) {
+	// console.log(result[2]);
+
+	// let newArrHue = arrayHueMain.map((item) => {
 	// 	sliceColor();
-	// 	let delta;
-	// 	if (result[2] <= 100 && result[2] > 97) {
-	// 		item = 100 - (result[2])
-	// 	} else if (result[2] <= 13 && result[2] >= 0) {
-	// 		item = 0
-	// 	} else if (result[2] <= item[0] && result[2] >= item[1]) {
-	// 		item[0] - (result[2] / 8)
-	// 	} else if (result[2] <= item[1] && result[2] >= item[2]) {
-	// 		item[1] - (result[2] / 8)
-	// 	} else if (result[2] <= item[2] && result[2] >= item[3]) {
-	// 		item[2] - (result[2] / 8)
-	// 	} else if (result[2] <= item[3] && result[2] >= item[4]) {
-	// 		item[3] - (result[2] / 8)
-	// 	} else if (result[2] <= item[4] && result[2] >= item[5]) {
-	// 		item[4] - (result[2] / 8)
-	// 	} else if (result[2] <= item[5] && result[2] >= item[6]) {
-	// 		item[5] - (result[2] / 8)
-	// 	} else if (result[2] <= item[6] && result[2] >= item[7]) {
-	// 		item[6] - (result[2] / 8)
-	// 	} else if (result[2] <= item[7] && result[2] >= item[0]) {
-	// 		item[7] - (result[2] / 8)
-	// 	}
-	// 	return item - 5;
+	// 	console.log(result[0]);
+	// 	return item + 10;
 	// });
-
-	console.log(result[0]);
-
-	let newArrHue = arrayHueMain.map((item) => {
-		sliceColor();
-		console.log(result[0]);
-		return item + 10;
-	});
 
 
 
 	//______Active Color_________//
 
 
-	function findColorName(e) {
+	function findColorName() {
 		// находим в активном табе активный цвет 
 
-		let color = $('span.active').css("background-color");
+		let color = $('span.active').css("backgroundColor");
 		//помещаем в  переменную *textColorBuffer*  имя HEX активного цвета
 		textColorBuffer = rgb2hex(color);
 		sliceColor();
 	}
 
 	function activeColor(e) { //функионал режима *span.active*
-		let spanActive = document.querySelector('span.active');
+		// let spanActive = document.querySelector('span.active');
 		const target = e.target; //получаем элемент клика	
 		// let activeImg = $(target).children('img');
 		//если клик не на *span.active* убираем класс *active, скрываем контейнер с именем цвета
@@ -195,16 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 			target.classList.remove("active");
 			$(spanActive).removeClass('active');
 			$(tabsContent).children().removeClass('active');
-			// target.parentNode.classList.remove('active');
+			target.parentNode.classList.remove('active');
 			textColor.classList.remove('textColor');
 		}
-
+console.log[result[2]]
 		target.classList.add('active');
 
-		if (target.classList.contains('loadImg')) {
-			$('.loadImg').removeClass('active');
-			target.parentNode.classList.add('active');
-		}
+		// if (target.classList.contains('loadImg')) {
+		// 	$('.loadImg').removeClass('active');
+		// 	target.parentNode.classList.add('active');
+		// }
 
 		textColor.classList.add('textColor'); // показываем контейнер с именем цвета, добовляем *active,
 
@@ -266,21 +239,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function calcCouMinus() { // запускаем перебор гаммы в minus режима БЕЗ *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(newArrHue, arraySaturSleep, arrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouPus() { // запускаем перебор гаммы в *+* режима  *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(newArrHue, arraySaturSleep, arrayLight);
-
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouMinus() { // запускаем перебор гаммы в *-* режима *span.active*
-
 		counterMinus(arrStyleColor);
-		correctGamma(newArrHue, arraySaturSleep, arrayLight);
-
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
+
+	
 	//_______Buttuns_______///
 
 
@@ -361,8 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	showTabsContent();
 
-	counterPlus(arrStyleColor);
-
 	correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep);
 
 
@@ -402,59 +372,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-		if (gammaLight == 100) {
-			$(tabsContent).children(item).css("background",
-				`hsl(${gammaLight}, ${50}%, ${ gammaLight -11}%)`);
-		} else if (gammaLight == 0) {
-			$(tabsContent).children(item).css("background",
-				`hsl(${gammaLight}, ${50}%, ${ gammaLight +11}%)`);
+		if (gammaLight[cou1] == 100) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
+		} else if (gammaLight[cou1] == 0) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
 		}
-		let newArrayLight = gammaLight.map(function (item) {
-			// result[2] = gammaLight [6];
-		if (result[2] <= 100 && result[2] > 97) {
-			item = 100 - (result[2])
-		} else if (result[2] <= 13 && result[2] >= 0) {
-			item = 10
-		}
-		// else if (result[2] <= item[0] && result[2] >= item[1]) {
-		// 	item[0] - (result[2] / 8)
-		// } else if (result[2] <= item[1] && result[2] >= item[2]) {
-		// 	item[1] - (result[2] / 8)
-		// } else if (result[2] <= item[2] && result[2] >= item[3]) {
-		// 	item[2] - (result[2] / 8)
-		// } else if (result[2] <= item[3] && result[2] >= item[4]) {
-		// 	item[3] - (result[2] / 8)
-		// } else if (result[2] <= item[4] && result[2] >= item[5]) {
-		// 	item[4] - (result[2] / 8)
-		// } else if (result[2] <= item[5] && result[2] >= item[6]) {
-		// 	item[5] - (result[2] / 8)
-		// } else if (result[2] <= item[6] && result[2] >= item[7]) {
-		// 	item[6] - (result[2] / 8)
-		// } else if (result[2] <= item[7] && result[2] >= item[0]) {
-		// 	item[7] - (result[2] / 8)
-		// }
-		return item - result[2];
-	});
-		
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 360) {
-			$(tabsContent).children(arrStyleColor[0]).css("background",
-				`hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ newArrayLight [0]  }%)`);
-			$(tabsContent).children(arrStyleColor[1]).css("background",
-				`hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ newArrayLight [1]   }%)`);
-			$(tabsContent).children(arrStyleColor[2]).css("background",
-				`hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ newArrayLight [2] +3  }%)`);
-			$(tabsContent).children(arrStyleColor[3]).css("background",
-				`hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ newArrayLight [3] +10  }%)`);
-			$(tabsContent).children(arrStyleColor[4]).css("background",
-				`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ newArrayLight [4]   }%)`);
-			$(tabsContent).children(arrStyleColor[5]).css("background",
-				`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou6]}%, ${ newArrayLight [5]   }%)`);
-			$(tabsContent).children(arrStyleColor[6]).css("background",
-				`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou7]}%, ${ newArrayLight [6]   }%)`);
-			$(tabsContent).children(arrStyleColor[7]).css("background",
-				`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou8]}%, ${ newArrayLight [7]    }%)`);
+			$(arrStyleColor[0]).css("background-color", `hsl(${ gammaHue[1]}, ${ + gammaSat[cou1]}%, ${ result[2]/1.23}%)`);
+			$(arrStyleColor[1]).css("background-color", `hsl(${ gammaHue[2]}, ${ + gammaSat[cou2]}%, ${ result[2]*1.23  }%)`);
+			$(arrStyleColor[2]).css("background-color", `hsl(${ gammaHue[3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [2] = gammaLight [2]*1.23+3  }%)`);
+			console.log(gammaLight [0], gammaLight [1],gammaLight [2],)
+			$(arrStyleColor[3]).css("background", `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
+			// $(tabsContent).children(arrStyleColor[4]).css("background",
+			// 	`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ gammaLight [cou5]   }%)`);
+			// $(tabsContent).children(arrStyleColor[5]).css("background",
+			// 	`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou6]}%, ${ gammaLight [cou6]   }%)`);
+			// $(tabsContent).children(arrStyleColor[6]).css("background",
+			// 	`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou7]}%, ${ gammaLight [cou7]   }%)`);
+			// $(tabsContent).children(arrStyleColor[7]).css("background",
+			// 	`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou8]}%, ${ gammaLight [cou8]    }%)`);
 		} 
+		// let spanActive = document.querySelector('span.active');
+		// sliceColor();
+		$('span.active').css('background-color', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
+		
 		// else if (gammaHue[cou1] >= 23 && gammaHue[cou1] <= 48) {
 		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
 		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1 }%)`);
@@ -592,11 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
 		// 		`hsl(${gammaHue[cou8]}, ${gammaSat[cou8]     }%, ${  gammaLight [7]   }%)`);
 		// }
-
-		sliceColor();
-		$('span.active').css('backgroundColor', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
-
-
 
 		return gammaHue, gammaSat, gammaLight;
 
@@ -921,7 +860,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	}, false);
 
 
+	let arrayHueGost = [15, 27, 15, 94, 48, 43, 38, 48];
+	let arraySaturGost = [20, 85, 50, 10, 50, 20, 50, 50];
 
+
+	let arrayHueKitch = [350, 15, 350, 58, 15, 94, 27, 15];
+	let arraySaturKitch = [100, 5, 20, 10, 20, 15, 60, 50];
+
+
+	let arrayHueKids = [22, 48, 43, 94, 159, 48, 48, 353, ];
+	let arraySaturKids = [100, 100, 100, 70, 80, 80, 100, 80];
+	let arrayLightKids = [95, 92, 79, 46, 43, 43, 79, 92];
+
+	let arrayHueCab = [252, 169, 246, 152, 98, 200, 217, 190, ];
+	let arraySaturCab = [5, 5, 5, 5, 0, 5, 5, 5];
+	let arrayLightCad = [95, 92, 92, 46, 27, 14, 14, 4];
+
+	let arrayHueHoll = [15, 27, 15, 94, 48, 43, 38, 48];
+	let arraySaturHoll = [10, 25, 20, 5, 0, 5, 5, 5];
+	let arrayLightHoll = [95, 92, 97, 46, 79, 79, 28, 4];
 
 	// ХОРОШАЯ ГАММА 
 	// H_2 = H_1 - 100; S_2 = 100;	L_2 =  L_1 + 3;
