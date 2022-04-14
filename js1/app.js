@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		'.color4',
 		'.color5',
 		'.color6',
-		'.color9',
+		'.color7',
 		'.color8'
 	];
 
@@ -61,29 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	let arrayHueSleep = [150, 190, 210, 190, 70, 48, 70, 180];
-	let arraySaturSleep = [20, 55, 50, 50, 70, 20, 10, 5];
+	let arraySaturSleep = [50, 50, 50, 50, 50, 50, 50, 50];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
-	result[2] = arrayLight [4]
-	
+	result[2] = arrayLight [5]
+	let arrAll =[arrayLight, arrayLightSleep, arraySaturSleep]
 
 	let newArrayLight = arrayLight.map(function (item, i) {
-	// 	result[2] = arrayLight [7];
-	// if (result[2] <= 100 && result[2] > 97) {
-	// 	item = 100 - (result[2])
-	// } else if (result[2] <= 13 && result[2] >= 0) {
-	// 	item = 10
-	// }
-	// item[i] = result[2]/1.23;
-	// item[1] = item[0]/1.23;
-	// item[2] = item[1]/1.23;
-	// item[3] = result[2]*1.23;
-	// item[4] = result[2]*1.23;
-	// item[5] = item[4]/1.23;
-	// item[6] = item[5]/1.23;
-	// item[7] = item[6]/1.23;
+		
+	if (result[2] <= 100 && result[2] > 97) {
+		item = 100 - (result[2])
+	} else if (result[2] <= 13 && result[2] >= 0) {
+		item = 10
+	}
 	
-	return item;
+	
+	return item[i] = result[2]*1.23;
+	
 });
 
 	//______ColorPicker_________//
@@ -234,22 +228,22 @@ console.log[result[2]]
 
 	function calcCouPlus() { // запускаем перебор гаммы в plus режима БЕЗ *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
 	}
 
 	function calcCouMinus() { // запускаем перебор гаммы в minus режима БЕЗ *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
 	}
 
 	function actCalcCouPus() { // запускаем перебор гаммы в *+* режима  *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
 	}
 
 	function actCalcCouMinus() { // запускаем перебор гаммы в *-* режима *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
 	}
 
 	
@@ -265,7 +259,7 @@ console.log[result[2]]
 	icon.addEventListener('click', () => {
 
 		shuffleArray(arrayHueSleep, arraySaturSleep, newArrHue);
-		correctGamma(newArrHue, arraySaturSleep, newArrLight)
+		
 
 	});
 
@@ -333,7 +327,7 @@ console.log[result[2]]
 
 	showTabsContent();
 
-	correctGamma(arrayHueSleep, arraySaturSleep, arrayLightSleep);
+	correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
 
 
 	//______ToolTip___________//
@@ -372,171 +366,173 @@ console.log[result[2]]
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-		if (gammaLight[cou1] == 100) {
-			$(tabsContent).children().css("background",
-				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
-		} else if (gammaLight[cou1] == 0) {
-			$(tabsContent).children().css("background",
-				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
-		}
-		
-		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 360) {
-			$(arrStyleColor[0]).css("background-color", `hsl(${ gammaHue[1]}, ${ + gammaSat[cou1]}%, ${ result[2]/1.23}%)`);
-			$(arrStyleColor[1]).css("background-color", `hsl(${ gammaHue[2]}, ${ + gammaSat[cou2]}%, ${ result[2]*1.23  }%)`);
-			$(arrStyleColor[2]).css("background-color", `hsl(${ gammaHue[3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [2] = gammaLight [2]*1.23+3  }%)`);
-			console.log(gammaLight [0], gammaLight [1],gammaLight [2],)
-			$(arrStyleColor[3]).css("background", `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
-			// $(tabsContent).children(arrStyleColor[4]).css("background",
-			// 	`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ gammaLight [cou5]   }%)`);
-			// $(tabsContent).children(arrStyleColor[5]).css("background",
-			// 	`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou6]}%, ${ gammaLight [cou6]   }%)`);
-			// $(tabsContent).children(arrStyleColor[6]).css("background",
-			// 	`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou7]}%, ${ gammaLight [cou7]   }%)`);
-			// $(tabsContent).children(arrStyleColor[7]).css("background",
-			// 	`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou8]}%, ${ gammaLight [cou8]    }%)`);
-		} 
-		// let spanActive = document.querySelector('span.active');
-		// sliceColor();
-		$('span.active').css('background-color', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
-		
-		// else if (gammaHue[cou1] >= 23 && gammaHue[cou1] <= 48) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1]  -2}%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -3 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] +10 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] -7 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +30 }%, ${  gammaLight [7]   }%)`);
-		// } else if (gammaHue[cou1] >= 49 && gammaHue[cou1] <= 93) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +35 }%, ${ +gammaLight [3] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5] +5  }%, ${  gammaLight [4]}%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +30 }%, ${  gammaLight [5] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +5  }%, ${  gammaLight [6] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +10 }%, ${  gammaLight [7]  }%)`);
-		// } else if (gammaHue[cou1] >= 94 && gammaHue[cou1] <= 158) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1}%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] -2}%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -5}%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +20 }%, ${  gammaLight [3] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] -7}%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8]     }%, ${  gammaLight [7]  }%)`);
-		// } else if (gammaHue[cou1] >= 159 && gammaHue[cou1] <= 199) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${ gammaLight [0] -7 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] -8 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -10}%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5] +10 }%, ${  gammaLight [4] -5}%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +10 }%, ${  gammaLight [5] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +20 }%, ${  gammaLight [6] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +20 }%, ${  gammaLight [7]  }%)`);
-		// } else if (gammaHue[cou1] >= 200 && gammaHue[cou1] <= 241) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1] +30 }%, ${  gammaLight [0] -4 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2] +50 }%, ${  gammaLight [1]-3  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3] +70 }%, ${  gammaLight [2]-3  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +20 }%, ${  gammaLight [3] +8 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] +1}%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +5  }%, ${  gammaLight [5] +5 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +10 }%, ${  gammaLight [6] +5 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +20 }%, ${  gammaLight [7] +5  }%)`);
-		// } else if (gammaHue[cou1] >= 242 && gammaHue[cou1] <= 280) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${+ gammaSat[cou1] +20  }%, ${  gammaLight [0] -1}%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${+ gammaSat[cou2] +20  }%, ${  gammaLight [1] }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${+ gammaSat[cou3] +30  }%, ${  gammaLight [2] +4}%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${+ gammaSat[cou4] +30  }%, ${  gammaLight [3] +25}%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${+ gammaSat[cou5] +30  }%, ${  gammaLight [4] +20 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${+ gammaSat[cou6] +30  }%, ${  gammaLight [5] +18}%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${+ gammaSat[cou7] +30  }%, ${  gammaLight [6] +15}%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${+ gammaSat[cou8] +30  }%, ${  gammaLight [7] +12 }%)`);
-		// } else if (gammaHue[cou1] >= 281 && gammaHue[cou1] <= 352) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3] +10 }%, ${  gammaLight [2]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] +5 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] +6}%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6] +6 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] -5  }%, ${  gammaLight [7] +5  }%)`);
-		// } else if (gammaHue[cou1] >= 353 && gammaHue[cou1] <= 360) {
-		// 	$(tabsContent).children(arrStyleColor[0]).css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${gammaSat[cou1]     }%, ${  gammaLight [0]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[1]).css("background",
-		// 		`hsl(${gammaHue[cou2]}, ${gammaSat[cou2]     }%, ${  gammaLight [1]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[2]).css("background",
-		// 		`hsl(${gammaHue[cou3]}, ${gammaSat[cou3]     }%, ${  gammaLight [2]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[3]).css("background",
-		// 		`hsl(${gammaHue[cou4]}, ${gammaSat[cou4]     }%, ${  gammaLight [3] +18 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[4]).css("background",
-		// 		`hsl(${gammaHue[cou5]}, ${gammaSat[cou5]     }%, ${  gammaLight [4] +5 }%)`);
-		// 	$(tabsContent).children(arrStyleColor[5]).css("background",
-		// 		`hsl(${gammaHue[cou6]}, ${gammaSat[cou6]     }%, ${  gammaLight [5]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[6]).css("background",
-		// 		`hsl(${gammaHue[cou7]}, ${gammaSat[cou7]     }%, ${  gammaLight [6]  }%)`);
-		// 	$(tabsContent).children(arrStyleColor[7]).css("background",
-		// 		`hsl(${gammaHue[cou8]}, ${gammaSat[cou8]     }%, ${  gammaLight [7]   }%)`);
+		// if (gammaLight[cou1] == 100) {
+		// 	$(tabsContent).children().css("background",
+		// 		`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
+		// } else if (gammaLight[cou1] == 0) {
+		// 	$(tabsContent).children().css("background",
+		// 		`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
 		// }
-
+		
+		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 22) {
+			$(arrStyleColor[0]).css("background-color", 
+			    `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [cou1]}%)`);
+			$(arrStyleColor[1]).css("background-color", 
+			    `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ gammaLight [cou2]  }%)`);
+			$(arrStyleColor[2]).css("background-color", 
+			    `hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [cou3]  }%)`);
+			$(arrStyleColor[3]).css("background", 
+			    `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
+			$(arrStyleColor[4]).css("background",
+				`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ gammaLight [cou5]   }%)`);
+			$(arrStyleColor[5]).css("background",
+				`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou6]}%, ${ gammaLight [cou6]   }%)`);
+			$(arrStyleColor[6]).css("background",
+				`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou7]}%, ${ gammaLight [cou7]   }%)`);
+			$(arrStyleColor[7]).css("background",
+				`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou8]}%, ${ gammaLight [cou8]    }%)`);
+		
+		
+	
+		
+	} else if (gammaHue[cou1] >= 23 && gammaHue[cou1] <= 48) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1 }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1]  -2}%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -3 }%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] +10 }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] -7 }%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6]  }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +30 }%, ${  gammaLight [7]   }%)`);
+		} else if (gammaHue[cou1] >= 49 && gammaHue[cou1] <= 93) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] }%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +35 }%, ${ +gammaLight [3] }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5] +5  }%, ${  gammaLight [4]}%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +30 }%, ${  gammaLight [5] }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +5  }%, ${  gammaLight [6] }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +10 }%, ${  gammaLight [7]  }%)`);
+		} else if (gammaHue[cou1] >= 94 && gammaHue[cou1] <= 158) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1}%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] -2}%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -5}%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +20 }%, ${  gammaLight [3] }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] -7}%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6] }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8]     }%, ${  gammaLight [7]  }%)`);
+		} else if (gammaHue[cou1] >= 159 && gammaHue[cou1] <= 199) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${ gammaLight [0] -7 }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1] -8 }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3]     }%, ${  gammaLight [2] -10}%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5] +10 }%, ${  gammaLight [4] -5}%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +10 }%, ${  gammaLight [5] }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +20 }%, ${  gammaLight [6] }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +20 }%, ${  gammaLight [7]  }%)`);
+		} else if (gammaHue[cou1] >= 200 && gammaHue[cou1] <= 241) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1] +30 }%, ${  gammaLight [0] -4 }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2] +50 }%, ${  gammaLight [1]-3  }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3] +70 }%, ${  gammaLight [2]-3  }%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +20 }%, ${  gammaLight [3] +8 }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4] +1}%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6] +5  }%, ${  gammaLight [5] +5 }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7] +10 }%, ${  gammaLight [6] +5 }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] +20 }%, ${  gammaLight [7] +5  }%)`);
+		} else if (gammaHue[cou1] >= 242 && gammaHue[cou1] <= 280) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${+ gammaSat[cou1] +20  }%, ${  gammaLight [0] -1}%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${+ gammaSat[cou2] +20  }%, ${  gammaLight [1] }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${+ gammaSat[cou3] +30  }%, ${  gammaLight [2] +4}%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${+ gammaSat[cou4] +30  }%, ${  gammaLight [3] +25}%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${+ gammaSat[cou5] +30  }%, ${  gammaLight [4] +20 }%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${+ gammaSat[cou6] +30  }%, ${  gammaLight [5] +18}%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${+ gammaSat[cou7] +30  }%, ${  gammaLight [6] +15}%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${+ gammaSat[cou8] +30  }%, ${  gammaLight [7] +12 }%)`);
+		} else if (gammaHue[cou1] >= 281 && gammaHue[cou1] <= 352) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${ + gammaSat[cou1]     }%, ${  gammaLight [0] -1 }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${ + gammaSat[cou2]     }%, ${  gammaLight [1]  }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${ + gammaSat[cou3] +10 }%, ${  gammaLight [2]  }%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${ + gammaSat[cou4] +10 }%, ${  gammaLight [3] +5 }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${ + gammaSat[cou5]     }%, ${  gammaLight [4]  }%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${ + gammaSat[cou6]     }%, ${  gammaLight [5] +6}%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${ + gammaSat[cou7]     }%, ${  gammaLight [6] +6 }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${ + gammaSat[cou8] -5  }%, ${  gammaLight [7] +5  }%)`);
+		} else if (gammaHue[cou1] >= 353 && gammaHue[cou1] <= 360) {
+			$(tabsContent).children(arrStyleColor[0]).css("background",
+				`hsl(${gammaHue[cou1]}, ${gammaSat[cou1]     }%, ${  gammaLight [0]  }%)`);
+			$(tabsContent).children(arrStyleColor[1]).css("background",
+				`hsl(${gammaHue[cou2]}, ${gammaSat[cou2]     }%, ${  gammaLight [1]  }%)`);
+			$(tabsContent).children(arrStyleColor[2]).css("background",
+				`hsl(${gammaHue[cou3]}, ${gammaSat[cou3]     }%, ${  gammaLight [2]  }%)`);
+			$(tabsContent).children(arrStyleColor[3]).css("background",
+				`hsl(${gammaHue[cou4]}, ${gammaSat[cou4]     }%, ${  gammaLight [3] +18 }%)`);
+			$(tabsContent).children(arrStyleColor[4]).css("background",
+				`hsl(${gammaHue[cou5]}, ${gammaSat[cou5]     }%, ${  gammaLight [4] +5 }%)`);
+			$(tabsContent).children(arrStyleColor[5]).css("background",
+				`hsl(${gammaHue[cou6]}, ${gammaSat[cou6]     }%, ${  gammaLight [5]  }%)`);
+			$(tabsContent).children(arrStyleColor[6]).css("background",
+				`hsl(${gammaHue[cou7]}, ${gammaSat[cou7]     }%, ${  gammaLight [6]  }%)`);
+			$(tabsContent).children(arrStyleColor[7]).css("background",
+				`hsl(${gammaHue[cou8]}, ${gammaSat[cou8]     }%, ${  gammaLight [7]   }%)`);
+		}
+		$('span.active').css('background-color', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
 		return gammaHue, gammaSat, gammaLight;
 
 	}
