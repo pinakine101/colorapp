@@ -405,40 +405,40 @@ button {
 
 .color1 {
     background:rgb(251, 217, 65);
-    flex-grow:7.8;
+    flex-grow:1;
 }
 .color2 {
-    height: 35.4px;
-    flex-grow: 35.4;
+    /* height: 35.4px; */
+    flex-grow: 1;
    
 }
 .color3 {
-    height: 5.7px;
-    flex-grow:5.7;
+    /* height: 5.7px; */
+    flex-grow:1;
  
     
 }
 .color4 {
-    height:2.3px;
-    flex-grow:2.3;
+    /* height:2.3px; */
+    flex-grow:1;
    
 }
 .color5 {
-    height:19px;
-    flex-grow:19;
+    /* height:19px; */
+    flex-grow:1;
    
 }
 .color6 {
-    height:9.1px;
-    flex-grow:9.1;
+    /* height:9.1px; */
+    flex-grow:1;
 }
 .color7 {
-    height:4.4px;
-    flex-grow:4.4;
+    /* height:4.4px; */
+    flex-grow:1;
 }
 .color8 {
-    height:15px;
-    flex-grow:15;
+    /* height:15px; */
+    flex-grow:1;
    
 }
 .burger {
