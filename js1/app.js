@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	let arraySaturSleep = [50, 50, 50, 50, 50, 50, 50, 50];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
-	result[2] = arrayLight [5]
-	let arrAll =[arrayLight, arrayLightSleep, arraySaturSleep]
+	result[2] = randomInteger2(0, 100);
+	
 
 	let newArrayLight = arrayLight.map(function (item, i) {
 		
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	
 	
-	return item[i] = result[2]*1.23;
+	return item[1] = result[2]/1.23;
 	
 });
 
@@ -258,7 +258,7 @@ console.log[result[2]]
 
 	icon.addEventListener('click', () => {
 
-		shuffleArray(arrayHueSleep, arraySaturSleep, newArrHue);
+		shuffleArray(arrStyleColor);
 		
 
 	});
@@ -891,13 +891,13 @@ console.log[result[2]]
 
 	// let h = 360, s = 100, l = 50 ;
 
-	//   function randomInteger2(min, max, e, r) {
-	// 	// случайное число от min до (max+1)
-	// 	let rand = min + Math.random() * (max  - min) + (r-e);
-	// 	return Math.floor(rand);
-	//   }
+	  function randomInteger2(min, max) {
+		// случайное число от min до (max+1)
+		let rand = min + Math.random() * (max  - min);
+		return Math.floor(rand);
+	  }
 
-	// h = randomInteger2(20, 50, 80, 90);
+	 randomInteger2(0, 100);
 
 
 	// if (h >= 30 && h <=100) {
