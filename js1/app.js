@@ -64,9 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	let arraySaturSleep = [50, 50, 50, 50, 50, 50, 50, 50];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
-	result[2] = arrayLight [5]
-	let arrAll =[arrayLight, arrayLightSleep, arraySaturSleep]
+	result[2] = randomInteger2(90, 100);
 
+
+	if (result[2] <= 100 && result[2] > 97) {
+		result[2] = 100 - (result[2])
+	} else if (result[2] <= 13 && result[2] >= 0) {
+		result[2] = 10
+	}
+
+	// arrayLight[0] =  result[2];
+	// arrayLight[1] = arrayLight[0] - 3;
+	// arrayLight[2] = arrayLight[1] -13;
+	// arrayLight[3] = arrayLight[2] -33;
+	// arrayLight[4] = arrayLight[3] -3;
+	// arrayLight[5] = arrayLight[4] -21;
+	// arrayLight[6] = arrayLight[5] -8;
+	// arrayLight[7] = arrayLight[6] -5;
+
+	// let newArrayLight = arrayLight;
+	console.log(arrayLight[0],arrayLight[1],arrayLight[2])
+	
 	let newArrayLight = arrayLight.map(function (item, i) {
 		
 	if (result[2] <= 100 && result[2] > 97) {
@@ -75,8 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		item = 10
 	}
 	
+	console.log(item)
+	return item -30;
 	
-	return item[i] = result[2]*1.23;
 	
 });
 
@@ -258,7 +277,7 @@ console.log[result[2]]
 
 	icon.addEventListener('click', () => {
 
-		shuffleArray(arrayHueSleep, arraySaturSleep, newArrHue);
+		shuffleArray(arrStyleColor);
 		
 
 	});
@@ -366,13 +385,22 @@ console.log[result[2]]
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-		// if (gammaLight[cou1] == 100) {
-		// 	$(tabsContent).children().css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
-		// } else if (gammaLight[cou1] == 0) {
-		// 	$(tabsContent).children().css("background",
-		// 		`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
-		// }
+		if (gammaLight[cou1] == 100) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
+		} else if (gammaLight[cou1] == 0) {
+			$(tabsContent).children().css("background",
+				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
+		}
+
+	gammaLight[0] =  result[2];
+	gammaLight[1] = gammaLight[0] - 3;
+	gammaLight[2] = gammaLight[1] -13;
+	gammaLight[3] = gammaLight[2] -33;
+	gammaLight[4] = gammaLight[3] -3;
+	gammaLight[5] = gammaLight[4] -21;
+	gammaLight[6] = gammaLight[5] -8;
+	gammaLight[7] = gammaLight[6] -5;
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 22) {
 			$(arrStyleColor[0]).css("background-color", 
@@ -891,13 +919,13 @@ console.log[result[2]]
 
 	// let h = 360, s = 100, l = 50 ;
 
-	//   function randomInteger2(min, max, e, r) {
-	// 	// случайное число от min до (max+1)
-	// 	let rand = min + Math.random() * (max  - min) + (r-e);
-	// 	return Math.floor(rand);
-	//   }
+	  function randomInteger2(min, max) {
+		// случайное число от min до (max+1)
+		let rand = min + Math.random() * (max  - min);
+		return Math.floor(rand);
+	  }
 
-	// h = randomInteger2(20, 50, 80, 90);
+	 randomInteger2(0, 100);
 
 
 	// if (h >= 30 && h <=100) {
