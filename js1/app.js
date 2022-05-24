@@ -385,13 +385,7 @@ console.log[result[2]]
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-		if (gammaLight[cou1] == 100) {
-			$(tabsContent).children().css("background",
-				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight[cou1] -11}%)`);
-		} else if (gammaLight[cou1] == 0) {
-			$(tabsContent).children().css("background",
-				`hsl(${gammaHue[cou1]}, ${50}%, ${ gammaLight [cou1]+11}%)`);
-		}
+	
 
 	gammaLight[0] =  result[2];
 	gammaLight[1] = gammaLight[0] - 3;
@@ -404,21 +398,21 @@ console.log[result[2]]
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 22) {
 			$(arrStyleColor[0]).css("background-color", 
-			    `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [cou1]}%)`);
+			    `hsl(${ gammaHue[cou1]}, ${ + gammaSat[cou1]}%, ${ gammaLight [0]}%)`);
 			$(arrStyleColor[1]).css("background-color", 
-			    `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou2]}%, ${ gammaLight [cou2]  }%)`);
+			    `hsl(${ gammaHue[cou2]}, ${ + gammaSat[cou1]}%, ${ gammaLight [1]  }%)`);
 			$(arrStyleColor[2]).css("background-color", 
-			    `hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou3]}%, ${ gammaLight [cou3]  }%)`);
+			    `hsl(${ gammaHue[cou3]}, ${ + gammaSat[cou1]}%, ${ gammaLight [2]  }%)`);
 			$(arrStyleColor[3]).css("background", 
-			    `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou4]}%, ${ gammaLight [cou4] +10  }%)`);
+			    `hsl(${ gammaHue[cou4]}, ${ + gammaSat[cou1]}%, ${ gammaLight [3] +10  }%)`);
 			$(arrStyleColor[4]).css("background",
-				`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou5]}%, ${ gammaLight [cou5]   }%)`);
+				`hsl(${ gammaHue[cou5]}, ${ + gammaSat[cou1]}%, ${ gammaLight [4]   }%)`);
 			$(arrStyleColor[5]).css("background",
-				`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou6]}%, ${ gammaLight [cou6]   }%)`);
+				`hsl(${ gammaHue[cou6]}, ${ + gammaSat[cou1]}%, ${ gammaLight [5]   }%)`);
 			$(arrStyleColor[6]).css("background",
-				`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou7]}%, ${ gammaLight [cou7]   }%)`);
+				`hsl(${ gammaHue[cou7]}, ${ + gammaSat[cou1]}%, ${ gammaLight [6]   }%)`);
 			$(arrStyleColor[7]).css("background",
-				`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou8]}%, ${ gammaLight [cou8]    }%)`);
+				`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou1]}%, ${ gammaLight [7]    }%)`);
 		
 		
 	
@@ -561,8 +555,13 @@ console.log[result[2]]
 				`hsl(${gammaHue[cou8]}, ${gammaSat[cou8]     }%, ${  gammaLight [7]   }%)`);
 		}
 		$('span.active').css('background-color', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
+		
+			if (gammaLight[cou1] == 100) {
+			 gammaLight[cou1] -11
+		} else if (gammaLight[cou1] == 0) {
+			gammaLight[cou1] +11
+		}
 		return gammaHue, gammaSat, gammaLight;
-
 	}
 
 
