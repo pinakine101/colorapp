@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	let arrayHueSleep = [150, 190, 210, 190, 70, 48, 70, 180];
-	let arraySaturSleep = [50, 50, 50, 50, 50, 50, 50, 50];
+	let arraySaturSleep = [50, 60, 70, 80, 90, 40, 30, 20];
 	let arrayLightSleep = [95, 92, 79, 46, 43, 43, 79, 92];
 
 	result[2] = randomInteger2(90, 100);
@@ -83,21 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
 	// arrayLight[7] = arrayLight[6] -5;
 
 	// let newArrayLight = arrayLight;
-	console.log(arrayLight[0],arrayLight[1],arrayLight[2])
 	
-	let newArrayLight = arrayLight.map(function (item, i) {
+	
+// 	let newArrayLight = arrayLight.map(function (item, i) {
 		
-	if (result[2] <= 100 && result[2] > 97) {
-		item = 100 - (result[2])
-	} else if (result[2] <= 13 && result[2] >= 0) {
-		item = 10
-	}
+// 	if (result[2] <= 100 && result[2] > 97) {
+// 		item = 100 - (result[2])
+// 	} else if (result[2] <= 13 && result[2] >= 0) {
+// 		item = 10
+// 	}
 	
-	console.log(item)
-	return item -30;
+// 	console.log(item)
+// 	return item -30;
 	
 	
-});
+// });
 
 	//______ColorPicker_________//
 
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				[r, g, b] = color.match(/\d+/g);
 			const colHsl = RGB2HSL(r, g, b);
 			result = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(colHsl).slice(1);
-			console.log(result[2])
+			console.log([result[0], result[1], result[2]])
 			return result;
 		});
 		
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			target.parentNode.classList.remove('active');
 			textColor.classList.remove('textColor');
 		}
-console.log[result[2]]
+
 		target.classList.add('active');
 
 		// if (target.classList.contains('loadImg')) {
@@ -247,22 +247,22 @@ console.log[result[2]]
 
 	function calcCouPlus() { // запускаем перебор гаммы в plus режима БЕЗ *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function calcCouMinus() { // запускаем перебор гаммы в minus режима БЕЗ *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouPus() { // запускаем перебор гаммы в *+* режима  *span.active*
 		counterPlus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	function actCalcCouMinus() { // запускаем перебор гаммы в *-* режима *span.active*
 		counterMinus(arrStyleColor);
-		correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+		correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 	}
 
 	
@@ -331,13 +331,7 @@ console.log[result[2]]
 
 	});
 
-
-
-
-
 	//_______Tabs_________//
-
-
 
 	function showTabsContent() {
 		tabsContent.style.display = 'flex';
@@ -346,7 +340,7 @@ console.log[result[2]]
 
 	showTabsContent();
 
-	correctGamma(arrayHueMain, arraySaturSleep, newArrayLight);
+	correctGamma(arrayHueMain, arraySaturSleep, arrayLight);
 
 
 	//______ToolTip___________//
@@ -385,8 +379,6 @@ console.log[result[2]]
 
 	function correctGamma(gammaHue, gammaSat, gammaLight) {
 
-	
-
 	gammaLight[0] =  result[2];
 	gammaLight[1] = gammaLight[0] - 3;
 	gammaLight[2] = gammaLight[1] -13;
@@ -395,6 +387,12 @@ console.log[result[2]]
 	gammaLight[5] = gammaLight[4] -21;
 	gammaLight[6] = gammaLight[5] -8;
 	gammaLight[7] = gammaLight[6] -5;
+
+	if (gammaLight [cou1] <= 100 && gammaLight [cou1] > 97) {
+		gammaLight [cou1]= 100 - 10
+	} else if (gammaLight [cou1]<= 13 && gammaLight [cou1] >= 0) {
+		gammaLight [cou1] = 10
+	}
 		
 		if (gammaHue[cou1] >= 0 && gammaHue[cou1] <= 22) {
 			$(arrStyleColor[0]).css("background-color", 
@@ -414,8 +412,6 @@ console.log[result[2]]
 			$(arrStyleColor[7]).css("background",
 				`hsl(${ gammaHue[cou8]}, ${ + gammaSat[cou1]}%, ${ gammaLight [7]    }%)`);
 		
-		
-	
 		
 	} else if (gammaHue[cou1] >= 23 && gammaHue[cou1] <= 48) {
 			$(tabsContent).children(arrStyleColor[0]).css("background",
@@ -556,11 +552,6 @@ console.log[result[2]]
 		}
 		$('span.active').css('background-color', `hsl(${result[0]}, ${result[1]}%, ${result[2]}%)`);
 		
-			if (gammaLight[cou1] == 100) {
-			 gammaLight[cou1] -11
-		} else if (gammaLight[cou1] == 0) {
-			gammaLight[cou1] +11
-		}
 		return gammaHue, gammaSat, gammaLight;
 	}
 
